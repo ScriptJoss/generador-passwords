@@ -1,5 +1,9 @@
 # Importamos libreria
 import random
+import pyttsx3
+
+# Inicializar motor
+ENGINE = pyttsx3.init()
 
 # Guardamos todos los caracteres
 passwords_caract = "+-/*!&$#?=@abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
@@ -10,9 +14,14 @@ pedir_passwords = int(input('Ingrese la longitud de la contraseña: '))
 # Guardamos para agregar aca los caracteres
 psw = ""
 
-# Recorre la cantidad de caracteres que el usuario puso para luego posteriormente con random.choice elegir caracteres randoms (aumentando) y al final guardandolos en "psw"
+''' Recorre la cantidad de caracteres que el usuario
+puso para luego posteriormente con random.choice
+elegir caracteres randoms (aumentando) y al final guardandolos en "psw"'''
 for i in range(pedir_passwords):
     psw += random.choice(passwords_caract)
 
-# Imprimos los caracteres finales 
+# Hacemos que diga la contraseña
+ENGINE.say(f'Su contraseña es {psw}')
+ENGINE.runAndWait()
+# Imprimos los caracteres finales
 print(psw)
